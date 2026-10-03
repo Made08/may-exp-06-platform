@@ -3,7 +3,7 @@ import { createHash } from "crypto";
 import { pool } from "@/lib/db";
 import { getSession } from "@/lib/auth";
 
-export const POLICY_VERSION = "1.0";
+const POLICY_VERSION = "1.0";
 
 export async function POST(req: Request) {
   const s = await getSession();

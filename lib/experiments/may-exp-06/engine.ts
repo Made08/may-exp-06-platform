@@ -85,7 +85,7 @@ export const mayExp06Processor = {
         n: g.length, ALT: median(ALT), MIR: MIR / n, FTR: FTR / n, CFR: CFR / n,
         ViolationRate: VIO / n, EC: mean(g.map((r) => r.evidence_completeness ?? 0)),
         CIs: { MIR: wilsonInterval(MIR, n), FTR: wilsonInterval(FTR, n), CFR: wilsonInterval(CFR, n), ViolationRate: wilsonInterval(VIO, n) },
-        decisions: Object.fromEntries(Object.entries(g.reduce((acc: Record<string, number>, r) => { acc[r.decision] = (acc[r.decision] ?? 0) + 1; return acc; }, {})).map(([k, v]) => [k, v / g.length])),
+        decisions: Object.fromEntries(Object.entries(g.reduce((acc: Record<string, number>, r) => { const decision = r.decision ?? "UNKNOWN"; acc[decision] = (acc[decision] ?? 0) + 1; return acc; }, {})).map(([k, v]) => [k, v / g.length])),
       };
     }
     const pick = (a: string, f: (r: RecordInput) => number) => records.filter((r) => r.arm === a).map(f);

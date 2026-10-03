@@ -35,6 +35,18 @@ export async function GET(req: Request) {
   const bins = Array.from({ length: 20 }, (_, i) => ({ lo: aiMin + ((aiMax - aiMin) * i) / 20, hi: aiMin + ((aiMax - aiMin) * (i + 1)) / 20, n: 0 }));
   for (const x of ais) bins[Math.min(19, Math.floor((x - aiMin) / ((aiMax - aiMin) / 20)))].n++;
   const seeds = [...new Set(norm.map((r) => Number(r.seed)))].sort((a, b) => a - b);
-  const robustness = Object.fromEntries(arms.map((a) => [a, seeds.map((sd) => ({ seed: sd, alt: median(norm.filter((r) => r.arm === a && Number(r.seed) === sd).map((r) => r.approval_minutes as number)) }))));
+  const robustness = Object.fromEntries(
+    arms.map((a) => [
+      a,
+      seeds.map((sd) => ({
+        seed: sd,
+        alt: median(
+          norm
+            .filter((r) => r.arm === a && Number(r.seed) === sd)
+            .map((r) => r.approval_minutes as number)
+        ),
+      })),
+    ])
+  );
   return NextResponse.json({ run, metrics: metrics.rows, statistics: stats.rows, hypotheses: hyps.rows, claims: claims.rows, boxplot, aiHistogram: bins, robustnessBySeed: robustness, nRecords: recs.length });
 }

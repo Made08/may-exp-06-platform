@@ -47,7 +47,8 @@ export async function getRowsFromFile(file: File, buf?: Buffer): Promise<Record<
   const name = file.name.toLowerCase();
   if (file.type === "application/json" || name.endsWith(".json")) {
     const parsed: unknown = JSON.parse(b.toString("utf8"));
-    const arr = Array.isArray(parsed) ? parsed : (parsed as Record<string, unknown>)[Object.keys(parsed)[0]];
+    const keys = Object.keys(parsed as Record<string, unknown>);
+    const arr = Array.isArray(parsed) ? parsed : (parsed as Record<string, unknown>)[keys[0]];
     if (!Array.isArray(arr)) throw new Error("JSON debe ser un array de registros");
     return arr as Record<string, unknown>[];
   }
