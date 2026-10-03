@@ -1,0 +1,202 @@
+{
+ "bs_ci": [
+  -847.9232550192232,
+  -820.2762361653445
+ ],
+ "ALTR": 0.9823486738081438,
+ "mir_ci": [
+  -0.9996598527809608,
+  -0.9966796321604621
+ ],
+ "cfr_ni": [
+  -0.013392954310860905,
+  0.009382288995475826
+ ],
+ "vio_ni": [
+  -0.015056678839958506,
+  0.004343401091521303
+ ],
+ "rob": {
+  "alt": 1.0,
+  "mir": 1.0,
+  "cfr": 0.6,
+  "vio": 0.6
+ },
+ "hyps": {
+  "H1a": {
+   "statistical": {
+    "state": "PASS",
+    "reason": "Mann-Whitney p<1e-16 (<0.05); ALTR=0.9823; IC95 bootstrap \u0394mediana=[-847.9, -820.3]"
+   },
+   "practical": {
+    "state": "NOT_EVALUABLE",
+    "reason": "Umbral pr\u00e1ctico de ALT: PENDIENTE_DE_DEFINICION"
+   },
+   "robustness": {
+    "state": "PASS",
+    "reason": "5/5 semillas favorables (1.00 \u2265 0.80, regla del script)"
+   },
+   "traceability": {
+    "state": "PASS",
+    "reason": "dataset_hash + analysis_hash + manifest verificados"
+   },
+   "status": "NOT_EVALUABLE"
+  },
+  "H1b": {
+   "statistical": {
+    "state": "PASS",
+    "reason": "\u0394MIR=-0.9990; IC95 Newcombe=[-0.9997, -0.9967] (criterio por IC)"
+   },
+   "practical": {
+    "state": "NOT_EVALUABLE",
+    "reason": "Umbral pr\u00e1ctico de MIR: PENDIENTE_DE_DEFINICION"
+   },
+   "robustness": {
+    "state": "PASS",
+    "reason": "5/5 semillas (1.00)"
+   },
+   "traceability": {
+    "state": "PASS",
+    "reason": "dataset_hash + analysis_hash + manifest verificados"
+   },
+   "status": "NOT_EVALUABLE"
+  },
+  "H1c": {
+   "statistical": {
+    "state": "PASS",
+    "reason": "CI95sup(\u0394CFR)=+0.00938 < \u03b4=0.03"
+   },
+   "practical": {
+    "state": "PASS",
+    "reason": "Margen \u03b4_CFR=0.03 de preregistration.json"
+   },
+   "robustness": {
+    "state": "NOT_EVALUABLE",
+    "reason": "Regla de consistencia del script definida solo para ALT; share exploratorio CFR=0.60"
+   },
+   "traceability": {
+    "state": "PASS",
+    "reason": "dataset_hash + analysis_hash + manifest verificados"
+   },
+   "status": "NOT_EVALUABLE"
+  },
+  "H1d": {
+   "statistical": {
+    "state": "PASS",
+    "reason": "CI95sup(\u0394Viol)=+0.00434 < \u03b4=0.02"
+   },
+   "practical": {
+    "state": "PASS",
+    "reason": "Margen \u03b4_Violation=0.02 de preregistration.json"
+   },
+   "robustness": {
+    "state": "NOT_EVALUABLE",
+    "reason": "Regla no definida para Violation; share exploratorio=0.60"
+   },
+   "traceability": {
+    "state": "PASS",
+    "reason": "dataset_hash + analysis_hash + manifest verificados"
+   },
+   "status": "NOT_EVALUABLE"
+  }
+ },
+ "claim": "NOT_EVALUABLE",
+ "blocks": {
+  "alt|CAB_UNIFORM": [
+   861.8356222320554,
+   831.2423744846271,
+   863.4145128211951,
+   855.7630293264666,
+   825.5733582138738
+  ],
+  "alt|POLICY_UNIFORM": [
+   13.878429783841629,
+   14.099764366750351,
+   13.962224070629203,
+   14.137404258439243,
+   13.993514944343985
+  ],
+  "alt|MAYAGUEZ_ADAPTIVE": [
+   15.02596571408073,
+   14.86428023972502,
+   15.071792558135414,
+   15.011870821047712,
+   14.942422796447689
+  ],
+  "mir|CAB_UNIFORM": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "mir|POLICY_UNIFORM": [
+   0.06333333333333334,
+   0.045,
+   0.045,
+   0.058333333333333334,
+   0.043333333333333335
+  ],
+  "mir|MAYAGUEZ_ADAPTIVE": [
+   0.0016666666666666668,
+   0.0016666666666666668,
+   0.0016666666666666668,
+   0.0,
+   0.0
+  ],
+  "cfr|CAB_UNIFORM": [
+   0.028333333333333332,
+   0.041666666666666664,
+   0.06666666666666667,
+   0.05333333333333334,
+   0.055
+  ],
+  "cfr|POLICY_UNIFORM": [
+   0.058333333333333334,
+   0.055,
+   0.05,
+   0.04,
+   0.06666666666666667
+  ],
+  "cfr|MAYAGUEZ_ADAPTIVE": [
+   0.056666666666666664,
+   0.043333333333333335,
+   0.056666666666666664,
+   0.06166666666666667,
+   0.041666666666666664
+  ],
+  "vio|CAB_UNIFORM": [
+   0.03833333333333333,
+   0.018333333333333333,
+   0.04,
+   0.028333333333333332,
+   0.04
+  ],
+  "vio|POLICY_UNIFORM": [
+   0.04,
+   0.05,
+   0.03666666666666667,
+   0.035,
+   0.04
+  ],
+  "vio|MAYAGUEZ_ADAPTIVE": [
+   0.03666666666666667,
+   0.03166666666666667,
+   0.04833333333333333,
+   0.035,
+   0.023333333333333334
+  ]
+ },
+ "seeds": [
+  101,
+  202,
+  303,
+  404,
+  505
+ ],
+ "decisions_may": {
+  "FAST_TRACK": 0.611,
+  "AUTOMATED_GATES": 0.388,
+  "HUMAN_REVIEW": 0.001
+ }
+}

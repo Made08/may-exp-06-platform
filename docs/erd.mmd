@@ -1,0 +1,23 @@
+erDiagram
+  organizations ||--o{ users : tiene
+  users ||--o{ sessions : abre
+  experiments ||--|| experiment_versions : versiona
+  experiments ||--o{ research_questions : plantea
+  experiments ||--o{ hypotheses : define
+  experiments ||--o{ variables : declara
+  experiments ||--o{ metric_definitions : define
+  hypotheses ||--o{ acceptance_criteria : cuantifica
+  experiments ||--o{ claims : emite
+  organizations ||--o{ datasets : posee
+  datasets ||--o{ dataset_files : preserva
+  datasets ||--o{ dataset_records : contiene
+  processing_runs ||--o{ processing_run_datasets : consume
+  datasets ||--o{ processing_run_datasets : alimenta
+  processing_runs ||--o{ metric_results : produce
+  processing_runs ||--o{ statistical_results : produce
+  processing_runs ||o{ hypothesis_results : evalúa
+  processing_runs ||o{ claim_results : emite
+  processing_runs ||o{ evidence : custodia
+  reports }o--|| organizations : pertenece
+  consents }o--|| users : registra
+  audit_logs }o--|| organizations : audita

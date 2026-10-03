@@ -1,0 +1,12 @@
+graph TD
+  U[Investigador / Org] -->|RBAC: sesión HMAC| UI[Next.js App Router · 7 páginas]
+  UI --> API[Route Handlers server-side]
+  API --> AUTH[lib/auth.ts · roles jerárquicos]
+  API --> ING[lib/ingestion.ts · CSV/XLSX/JSON + SHA-256]
+  API --> ENG[Motor MAY-EXP-06 · engine.ts]
+  ENG --> ST[lib/statistics.ts · MW / Newcombe / Wilson / Bootstrap]
+  ENG --> EVAL[Evaluación H1a-H1d + C06 · 4 criterios]
+  API --> PG[(PostgreSQL / Neon · RLS por organización)]
+  API --> EV[Evidencia: INGESTION/VALIDATION/RESULT/MANIFEST]
+  EV --> REP[Reportes JSON/CSV/HTML-PDF + report_hash]
+  REP --> TRC[Trazabilidad /api/traceability/:claimId]
