@@ -27,6 +27,7 @@ Node 20+, PostgreSQL 16 (Neon recomendado), cuenta Vercel.
 Copiar `.env.example` → `.env.local` y completar `DATABASE_URL`, `DIRECT_DATABASE_URL`,
 `AUTH_SECRET` (`openssl rand -base64 32`), `EXPERIMENT_ID`, `EXPERIMENT_VERSION`,
 `DATA_RETENTION_DAYS`, `MAX_UPLOAD_MB`, `APP_ENV`, `NEXT_PUBLIC_APP_NAME`.
+Para OAuth (opcional): `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`.
 Nunca commitear secretos.
 
 ## 6. Instalación

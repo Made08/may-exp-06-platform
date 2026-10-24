@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/experiment/layout,_N_T_/experiment/page,_N_T_/experiment"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/e615ac94d73bc16e47459aa8d18ebc2813882e5065ff92746e7e8e3dca19e50f/$/experiment",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/experiment/page"
+    },
+    "isFallback": false
+  }
+}

@@ -1,5 +1,6 @@
 -- ============================================================================
 -- MAY-EXP-06 · DDL idempotente (PostgreSQL 16 / Neon) — aislamiento multitenant
+-- Soporte para autenticación: local (email/pass) y OAuth (Google, GitHub, etc.)
 -- ============================================================================
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
@@ -16,7 +17,13 @@ CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   organization_id UUID NOT NULL REFERENCES organizations(id),
   email TEXT NOT NULL UNIQUE,
-  password_hash TEXT NOT NULL,
+  password_hash TEXT,
+  provider TEXT CHECK (provider IN ('local', 'google', 'github', 'microsoft', 'email')) DEFAULT 'local',
+  provider_id TEXT,
+  name TEXT,
+  avatar_url TEXT,
+  email_verified BOOLEAN DEFAULT FALSE,
+  last_login_at TIMESTAMPTZ,
   role TEXT NOT NULL CHECK (role IN ('RESEARCH_ADMIN','RESEARCHER','ORGANIZATION_ADMIN','DATA_CONTRIBUTOR','VIEWER','AUDITOR')),
   created_at TIMESTAMPTZ NOT NULL DEFAULT now());
 
@@ -188,3 +195,5 @@ CREATE INDEX IF NOT EXISTS idx_runs_org ON processing_runs(organization_id, star
 CREATE INDEX IF NOT EXISTS idx_metric_run ON metric_results(run_id);
 CREATE INDEX IF NOT EXISTS idx_stats_run ON statistical_results(run_id);
 CREATE INDEX IF NOT EXISTS idx_evidence_run ON evidence(run_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_provider ON users(provider, provider_id) WHERE provider IS NOT NULL AND provider_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_users_email_verified ON users(email) WHERE email_verified = TRUE;
